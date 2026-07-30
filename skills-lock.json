@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "manga-drama": {
+      "source": "freestylefly/canghe-skills",
+      "sourceType": "github",
+      "skillPath": "skills/canghe-manga-drama/SKILL.md",
+      "computedHash": "1d0360c29651619ce53230fcd2c97252610f97ed0b31cf74d55b9ae1652e7049"
+    }
+  }
+}
