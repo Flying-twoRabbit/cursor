@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>差一毫 · 烧脑找色</title>
+  <meta name="description" content="在一堆几乎一样的色块里，找出那个差一毫的。简单，但越玩越烧脑。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="grain"></div>
+  </div>
+
+  <main class="app">
+    <!-- Start -->
+    <section id="screen-start" class="screen screen-start is-active" aria-label="开始">
+      <p class="brand">差一毫</p>
+      <h1 class="tagline">差一点，就差很多</h1>
+      <p class="lede">在几乎相同的色块里，找出那个细微不同的。越往后，色差越细。</p>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" id="btn-start">开始找色</button>
+        <button type="button" class="btn btn-ghost" id="btn-how">怎么玩</button>
+      </div>
+      <p class="best" id="best-start" hidden></p>
+    </section>
+
+    <!-- How -->
+    <section id="screen-how" class="screen screen-how" aria-label="玩法" hidden>
+      <p class="brand brand-sm">差一毫</p>
+      <h2 class="section-title">怎么玩</h2>
+      <ol class="rules">
+        <li>点出<strong>颜色不同</strong>的那一格。</li>
+        <li>越往后格子越多、色差越细、时间越紧。</li>
+        <li>点错扣一命；三命用尽结束。</li>
+      </ol>
+      <button type="button" class="btn btn-primary" id="btn-how-back">知道了</button>
+    </section>
+
+    <!-- Play -->
+    <section id="screen-play" class="screen screen-play" aria-label="游戏中" hidden>
+      <header class="hud">
+        <div class="hud-item">
+          <span class="hud-label">关卡</span>
+          <span class="hud-value" id="hud-level">1</span>
+        </div>
+        <div class="hud-item hud-score">
+          <span class="hud-label">得分</span>
+          <span class="hud-value" id="hud-score">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">生命</span>
+          <span class="hud-value lives" id="hud-lives" aria-live="polite">●●●</span>
+        </div>
+      </header>
+      <div class="timer-wrap" aria-hidden="true">
+        <div class="timer-bar" id="timer-bar"></div>
+      </div>
+      <p class="prompt" id="prompt">找出不同的那一块</p>
+      <div class="board-wrap">
+        <div class="board" id="board" role="grid" aria-label="色块棋盘"></div>
+      </div>
+    </section>
+
+    <!-- Result -->
+    <section id="screen-result" class="screen screen-result" aria-label="结算" hidden>
+      <p class="brand brand-sm">差一毫</p>
+      <h2 class="section-title" id="result-title">脑回路已断裂</h2>
+      <p class="result-score"><span id="result-score">0</span><span class="result-unit">分</span></p>
+      <p class="result-meta" id="result-meta"></p>
+      <p class="best" id="best-result" hidden></p>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" id="btn-retry">再来一局</button>
+        <button type="button" class="btn btn-ghost" id="btn-home">回首页</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="game.js"></script>
+</body>
+</html>
