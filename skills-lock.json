@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "remotion-best-practices": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-best-practices/SKILL.md",
+      "computedHash": "c5a82bc5c271b2072beda5c96d38bb0677b774bdcf54973fbc45aa1526efff2d"
+    },
+    "remotion-create": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-create/SKILL.md",
+      "computedHash": "529c58f361c9fef8f11b33640aca8ef01dce6016678b7e5cd12bd8b9a5bf0f6a"
+    },
+    "remotion-render": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-render/SKILL.md",
+      "computedHash": "bd39f1f2a03ce91f764a518a994ee8a6201256f9e161b99e1230323bd501f752"
+    }
+  }
+}
