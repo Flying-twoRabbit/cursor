@@ -101,7 +101,7 @@
   function showToast(message, kind) {
     toast.text = message;
     toast.kind = kind || "";
-    toast.until = nowFn() + 900;
+    toast.until = nowFn() + 1200;
   }
 
   function gridSizeForLevel(level) {
@@ -740,31 +740,34 @@
   function drawToastLayer() {
     if (!toast.text || nowFn() > toast.until) return;
     var remain = toast.until - nowFn();
-    var a = remain > 700 ? 1 : remain / 700;
+    var a = remain > 900 ? 1 : Math.max(0.15, remain / 900);
     ctx.save();
     ctx.globalAlpha = a;
     var label = toast.text;
-    ctx.font = "600 14px sans-serif";
-    var tw = ctx.measureText(label).width + 36;
-    var th = 36;
+    ctx.font = "700 15px sans-serif";
+    var tw = ctx.measureText(label).width + 44;
+    var th = 40;
     var tx = (W - tw) / 2;
-    var ty = H - Math.max(36, sys.safeArea ? H - sys.safeArea.bottom + 12 : 48) - th;
-    if (ty < H * 0.75) ty = H - 64;
+    var bottomInset = 28;
+    if (sys.safeArea && typeof sys.safeArea.bottom === "number") {
+      bottomInset = Math.max(28, H - sys.safeArea.bottom + 16);
+    }
+    var ty = H - bottomInset - th;
 
     roundRect(tx, ty, tw, th, th / 2);
-    ctx.fillStyle = "rgba(11,28,36,0.92)";
+    ctx.fillStyle = "rgba(7,20,26,0.94)";
     ctx.fill();
     ctx.strokeStyle =
       toast.kind === "good"
-        ? "rgba(62,207,173,0.45)"
+        ? "rgba(62,207,173,0.55)"
         : toast.kind === "bad"
-          ? "rgba(232,93,93,0.45)"
-          : "rgba(232,244,241,0.15)";
-    ctx.lineWidth = 1;
+          ? "rgba(232,93,93,0.55)"
+          : "rgba(232,244,241,0.2)";
+    ctx.lineWidth = 1.5;
     ctx.stroke();
     drawText(label, W / 2, ty + th / 2, {
-      size: 14,
-      weight: "600",
+      size: 15,
+      weight: "700",
       color: toast.kind === "good" ? COLORS.mint : toast.kind === "bad" ? "#ffb0b0" : COLORS.foam,
       align: "center",
       baseline: "middle",
