@@ -3,6 +3,7 @@
 ## 小游戏
 
 - [**差一毫**](index.html) — 烧脑找色：在几乎相同的色块里找出细微不同的那一块。直接用浏览器打开即可玩。
+- [**差一毫 · 微信小游戏 Canvas 版**](wechat-minigame/) — 同玩法的微信小游戏移植；可用 `wechat-minigame/preview.html` 浏览器预览，或用微信开发者工具打开 `wechat-minigame` 目录。
 
 ## Skills
 
