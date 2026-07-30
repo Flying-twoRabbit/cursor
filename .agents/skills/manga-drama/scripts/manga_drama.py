@@ -371,8 +371,10 @@ def main():
         parser.print_help()
         sys.exit(1)
     
-    # 设置 API Key
-    require_env_key("ARK_API_KEY")
+    # Only video generation calls the remote Seedance API. Local storyboard
+    # creation should remain usable before credentials are configured.
+    if args.command in {"generate", "from-script"}:
+        require_env_key("ARK_API_KEY")
     
     try:
         if args.command == "generate":
