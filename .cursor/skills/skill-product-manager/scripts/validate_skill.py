@@ -44,7 +44,13 @@ def resource_files(skill_dir: Path) -> list[Path]:
     for dirname in RESOURCE_DIRS:
         directory = skill_dir / dirname
         if directory.is_dir():
-            files.extend(path for path in directory.rglob("*") if path.is_file())
+            files.extend(
+                path
+                for path in directory.rglob("*")
+                if path.is_file()
+                and "__pycache__" not in path.parts
+                and path.suffix not in {".pyc", ".pyo"}
+            )
     return files
 
 

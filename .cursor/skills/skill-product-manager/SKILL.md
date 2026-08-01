@@ -112,7 +112,7 @@ description: >-
 创建后运行：
 
 ```bash
-python scripts/validate_skill.py <skill-directory>
+python3 scripts/validate_skill.py <skill-directory>
 ```
 
 若本 Skill 的校验器不可用，则人工按 `references/quality-rubric.md` 检查。
@@ -127,6 +127,8 @@ python scripts/validate_skill.py <skill-directory>
 - **改造 Skill**：对比“加载新版”和“加载修改前版本”。
 
 有并行 Agent 时同时运行两组，避免先后执行造成不公平的上下文差异。没有并行能力时依次运行并清空无关上下文。
+
+对比输出必须来自两组任务的实际执行，不能由评测者照着新旧规则代写“示范结果”。如果环境无法运行独立 Agent，将行为 A/B 明确标为未完成；此时可以先做结构、触发描述和规则覆盖的静态代理检查，但不能把它宣传成真实任务效果。
 
 比较以下证据：
 
