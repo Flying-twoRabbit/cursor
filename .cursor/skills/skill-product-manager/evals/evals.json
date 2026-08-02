@@ -1,0 +1,43 @@
+{
+  "skill_name": "skill-product-manager",
+  "evals": [
+    {
+      "id": 1,
+      "name": "vague-workflow-first-interview",
+      "prompt": "我想做一个 Skill，帮我把每周散落在 Slack、Linear 和会议记录里的信息整理成周报。现在每周都要手工找，很烦。你先帮我把这个想法梳理清楚。",
+      "expected_output": "先调研并紧凑比较 2–4 个相关方案，给出一个推荐；利用已有信息后只提出 3–5 个会影响设计的问题，不急着生成一堆文件。",
+      "assertions": [
+        "给出 2–4 个有来源或可识别名称的候选方案及明确推荐",
+        "本轮提出的问题总数在 3–5 个之间",
+        "问题围绕现有流程、错误点、输入边界或成功标准，且不重复询问已知信息"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "well-specified-csv-skill",
+      "prompt": "请直接做一个客服工单清洗 Skill。输入永远是 CSV，列为 ticket_id、created_at、category、content；要去重、统一 UTC 时间、把 category 映射成 billing/product/other，输出 clean.csv 和异常摘要。缺失 ticket_id 的行进入 rejected.csv，绝不能覆盖原文件。用户说“清洗客服工单”或上传带这些列的 CSV 时触发。请自行采用合理默认值，创建完整文件并验证。",
+      "expected_output": "识别需求已足够，简短调研后直接创建精简 Skill；确定性清洗逻辑放入可执行脚本，包含错误处理和不覆盖原文件的保护，并实际验证成功与失败路径。",
+      "assertions": [
+        "创建有效的 SKILL.md，name 与目录一致且 description 包含能力和触发条件",
+        "提供并运行确定性 CSV 清洗脚本，而不是仅给自然语言步骤",
+        "验证去重、UTC 转换、分类映射、拒绝缺失 ID 以及不覆盖输入文件",
+        "没有创建无用途的占位文件"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "repair-undertriggering-skill",
+      "prompt": "这个 Skill 经常不触发，也会凭空编造会议决定，请你诊断、改好并用真实任务和旧版对比。现有内容如下：\\n---\\nname: meeting-notes\\ndescription: Helps with notes.\\n---\\n# Notes\\nWrite a nice meeting summary.\\n",
+      "expected_output": "保留旧版基线，识别触发描述过泛和缺少事实边界；调研成熟会议纪要方案后，用少量高价值问题补齐真实工作流，改造时明确禁止编造并区分决定、行动项和未知信息，最后与旧版执行相同真实任务对比。",
+      "assertions": [
+        "明确区分触发问题与执行可靠性问题",
+        "新版 description 包含具体自然语言触发场景",
+        "新版工作流要求只依据输入事实并显式标记未知项",
+        "使用相同任务对比新版和旧版，而非只做静态格式检查"
+      ],
+      "files": []
+    }
+  ]
+}
